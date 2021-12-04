@@ -1,4 +1,4 @@
-package br.com.giantlivros.livrariaonline.livrariaonline;
+package br.com.giantlivros.livrariaonline;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package br.com.giantlivros.livrariaonline.livrariaonline;
+package br.com.giantlivros.livrariaonline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
