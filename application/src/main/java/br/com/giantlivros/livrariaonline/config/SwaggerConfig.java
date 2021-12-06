@@ -1,4 +1,4 @@
-package br.com.giantlivros.livrariaonline.docs;
+package br.com.giantlivros.livrariaonline.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
