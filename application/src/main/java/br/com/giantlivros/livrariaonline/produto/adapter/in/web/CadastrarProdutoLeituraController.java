@@ -27,11 +27,12 @@ public class CadastrarProdutoLeituraController {
             @ApiResponse(code = 400, message = "Argumento inválido. Verifique o JSON enviado.")
     })
     @PostMapping(path = "/cadastrar-produto")
-    public ResponseEntity<Void> cadastrarProduto(@RequestBody CadastrarProdutoLeituraUseCase.InputValues input){
+    public ResponseEntity<Void> cadastrarProduto(
+            @RequestBody CadastrarProdutoLeituraUseCase.InputValues input){
+
         CadastrarProdutoLeituraUseCase.OutputValues outputValues =
                 cadastrarProdutoLeituraUseCase.execute(input);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
 }

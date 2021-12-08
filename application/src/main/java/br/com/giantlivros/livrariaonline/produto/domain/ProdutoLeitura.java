@@ -5,6 +5,7 @@ import br.com.giantlivros.livrariaonline.produto.domain.enums.Genero;
 import br.com.giantlivros.livrariaonline.produto.domain.enums.Idioma;
 import com.sun.istack.NotNull;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Getter
 @Entity
+@NoArgsConstructor
 @Table(name = "tb_produtoleitura")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ProdutoLeitura extends Produto {
@@ -63,4 +65,5 @@ public class ProdutoLeitura extends Produto {
         this.indice = indice;
         this.genero = genero;
     }
+
 }
