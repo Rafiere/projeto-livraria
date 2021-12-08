@@ -23,4 +23,5 @@ public class ProdutoLeituraPersistenceAdapter implements
         produtoLeituraRepository.deleteById(idProdutoLeitura);
         return null;
     }
+
 }
