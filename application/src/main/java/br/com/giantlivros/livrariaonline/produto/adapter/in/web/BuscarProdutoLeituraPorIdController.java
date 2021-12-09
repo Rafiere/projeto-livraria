@@ -1,7 +1,7 @@
 package br.com.giantlivros.livrariaonline.produto.adapter.in.web;
 
-import br.com.giantlivros.livrariaonline.produto.adapter.in.web.response.BuscarProdutoPorIdResponse;
-import br.com.giantlivros.livrariaonline.produto.application.port.in.BuscarProdutoPorIdUseCase;
+import br.com.giantlivros.livrariaonline.produto.adapter.in.web.response.BuscarProdutoLeituraPorIdResponse;
+import br.com.giantlivros.livrariaonline.produto.application.port.in.BuscarProdutoLeituraPorIdUseCase;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/produto")
 @RequiredArgsConstructor
-public class BuscarProdutoPorIdController {
+public class BuscarProdutoLeituraPorIdController {
 
-    private final BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase;
+    private final BuscarProdutoLeituraPorIdUseCase buscarProdutoPorIdUseCase;
 
     @ApiOperation(value = "Busca um \"ProdutoLeitura\" através do ID.")
     @ApiResponses(value = {
@@ -28,13 +28,13 @@ public class BuscarProdutoPorIdController {
             @ApiResponse(code = 404, message = "Produto não encontrado"),
             @ApiResponse(code = 400, message = "Algum argumento inválido encontrado")})
     @GetMapping(path = "/buscar-produto/{idProduto}")
-    public ResponseEntity<BuscarProdutoPorIdResponse> executa(@PathVariable(name = "idProduto") Long idProduto) {
+    public ResponseEntity<BuscarProdutoLeituraPorIdResponse> executa(@PathVariable(name = "idProduto") Long idProduto) {
 
-        BuscarProdutoPorIdUseCase.OutputValues output = buscarProdutoPorIdUseCase.execute(new BuscarProdutoPorIdUseCase.InputValues(
+        BuscarProdutoLeituraPorIdUseCase.OutputValues output = buscarProdutoPorIdUseCase.execute(new BuscarProdutoLeituraPorIdUseCase.InputValues(
                 idProduto
         ));
 
         return ResponseEntity.ok().body(
-                new BuscarProdutoPorIdResponse(output));
+                new BuscarProdutoLeituraPorIdResponse(output));
     }
 }

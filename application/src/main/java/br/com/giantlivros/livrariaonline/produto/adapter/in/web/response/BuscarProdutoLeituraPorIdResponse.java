@@ -1,6 +1,6 @@
 package br.com.giantlivros.livrariaonline.produto.adapter.in.web.response;
 
-import br.com.giantlivros.livrariaonline.produto.application.port.in.BuscarProdutoPorIdUseCase;
+import br.com.giantlivros.livrariaonline.produto.application.port.in.BuscarProdutoLeituraPorIdUseCase;
 import br.com.giantlivros.livrariaonline.produto.domain.*;
 import br.com.giantlivros.livrariaonline.produto.domain.enums.Categoria;
 import br.com.giantlivros.livrariaonline.produto.domain.enums.Genero;
@@ -11,24 +11,24 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
-public class BuscarProdutoPorIdResponse {
+public class BuscarProdutoLeituraPorIdResponse {
 
         private final Long id;
-        private String titulo;
-        private BigDecimal preco;
-        private Tamanho tamanho;
-        private Integer qtdEstoque;
-        private List<Avaliacao> avaliacoes;
-        private List<ImagemProduto> imagensProduto;
-        private Categoria categoria;
-        private Autor autor;
-        private Editora editora;
-        private Integer qtdPaginas;
-        private Idioma idioma;
-        private Indice indice;
-        private Genero genero;
+        private final String titulo;
+        private final BigDecimal preco;
+        private final Tamanho tamanho;
+        private final Integer qtdEstoque;
+        private final List<Avaliacao> avaliacoes;
+        private final List<ImagemProduto> imagensProduto;
+        private final Categoria categoria;
+        private final Autor autor;
+        private final Editora editora;
+        private final Integer qtdPaginas;
+        private final Idioma idioma;
+        private final Indice indice;
+        private final Genero genero;
 
-    public BuscarProdutoPorIdResponse(BuscarProdutoPorIdUseCase.OutputValues output){
+    public BuscarProdutoLeituraPorIdResponse(BuscarProdutoLeituraPorIdUseCase.OutputValues output){
         this.id = output.getProdutoLeitura().getId();
         this.titulo = output.getProdutoLeitura().getTitulo();
         this.preco = output.getProdutoLeitura().getPreco();
