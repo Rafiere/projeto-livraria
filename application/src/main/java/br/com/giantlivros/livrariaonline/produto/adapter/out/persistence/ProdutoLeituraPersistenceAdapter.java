@@ -1,5 +1,6 @@
 package br.com.giantlivros.livrariaonline.produto.adapter.out.persistence;
 
+import br.com.giantlivros.livrariaonline.produto.application.port.out.BuscarProdutoPorIdPort;
 import br.com.giantlivros.livrariaonline.produto.application.port.out.CadastrarProdutoLeituraPort;
 import br.com.giantlivros.livrariaonline.produto.application.port.out.RemoverProdutoLeituraPort;
 import br.com.giantlivros.livrariaonline.produto.domain.ProdutoLeitura;
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ProdutoLeituraPersistenceAdapter implements
         CadastrarProdutoLeituraPort,
-        RemoverProdutoLeituraPort {
+        RemoverProdutoLeituraPort,
+        BuscarProdutoPorIdPort {
 
     private final ProdutoLeituraRepository produtoLeituraRepository;
 
@@ -24,4 +26,8 @@ public class ProdutoLeituraPersistenceAdapter implements
         return null;
     }
 
+    @Override
+    public ProdutoLeitura buscarProdutoLeituraPorId(Long idProdutoLeitura) {
+        return produtoLeituraRepository.findById(idProdutoLeitura).orElseThrow();
+    }
 }
