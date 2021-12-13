@@ -1,6 +1,6 @@
 package br.com.giantlivros.livrariaonline.produto.adapter.in.web;
 
-import br.com.giantlivros.livrariaonline.produto.adapter.in.web.response.BuscarProdutoLeituraPorIdResponse;
+import br.com.giantlivros.livrariaonline.produto.adapter.in.web.response.BuscarProdutoLeituraResponse;
 import br.com.giantlivros.livrariaonline.produto.application.port.in.BuscarProdutoLeituraPorIdUseCase;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,13 +28,13 @@ public class BuscarProdutoLeituraPorIdController {
             @ApiResponse(code = 404, message = "Produto não encontrado"),
             @ApiResponse(code = 400, message = "Algum argumento inválido encontrado")})
     @GetMapping(path = "/buscar-produto/{idProduto}")
-    public ResponseEntity<BuscarProdutoLeituraPorIdResponse> executa(@PathVariable(name = "idProduto") Long idProduto) {
+    public ResponseEntity<BuscarProdutoLeituraResponse> executa(@PathVariable(name = "idProduto") Long idProduto) {
 
         BuscarProdutoLeituraPorIdUseCase.OutputValues output = buscarProdutoPorIdUseCase.execute(new BuscarProdutoLeituraPorIdUseCase.InputValues(
                 idProduto
         ));
 
         return ResponseEntity.ok().body(
-                new BuscarProdutoLeituraPorIdResponse(output));
+                new BuscarProdutoLeituraResponse(output));
     }
 }

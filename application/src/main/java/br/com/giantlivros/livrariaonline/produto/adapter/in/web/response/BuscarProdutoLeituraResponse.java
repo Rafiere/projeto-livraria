@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
-public class BuscarProdutoLeituraPorIdResponse {
+public class BuscarProdutoLeituraResponse {
 
         private final Long id;
         private final String titulo;
@@ -28,7 +28,7 @@ public class BuscarProdutoLeituraPorIdResponse {
         private final Indice indice;
         private final Genero genero;
 
-    public BuscarProdutoLeituraPorIdResponse(BuscarProdutoLeituraPorIdUseCase.OutputValues output){
+    public BuscarProdutoLeituraResponse(BuscarProdutoLeituraPorIdUseCase.OutputValues output){
         this.id = output.getProdutoLeitura().getId();
         this.titulo = output.getProdutoLeitura().getTitulo();
         this.preco = output.getProdutoLeitura().getPreco();

@@ -6,5 +6,6 @@ public enum Idioma {
     ESPANHOL,
     ITALIANO,
     FRANCES,
-    ALEMAO
+    ALEMAO,
+    NONE
 }

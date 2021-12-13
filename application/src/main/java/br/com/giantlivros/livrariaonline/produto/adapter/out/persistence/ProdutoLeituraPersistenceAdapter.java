@@ -1,14 +1,15 @@
 package br.com.giantlivros.livrariaonline.produto.adapter.out.persistence;
 
-import br.com.giantlivros.livrariaonline.produto.application.port.out.BuscarProdutoLeituraPorIdPort;
-import br.com.giantlivros.livrariaonline.produto.application.port.out.BuscarTodosOsProdutosLeituraPort;
-import br.com.giantlivros.livrariaonline.produto.application.port.out.CadastrarProdutoLeituraPort;
-import br.com.giantlivros.livrariaonline.produto.application.port.out.RemoverProdutoLeituraPort;
+import br.com.giantlivros.livrariaonline.produto.application.port.out.*;
 import br.com.giantlivros.livrariaonline.produto.domain.ProdutoLeitura;
+import br.com.giantlivros.livrariaonline.produto.domain.enums.Idioma;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
+import org.yaml.snakeyaml.util.EnumUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -17,7 +18,8 @@ public class ProdutoLeituraPersistenceAdapter implements
         CadastrarProdutoLeituraPort,
         RemoverProdutoLeituraPort,
         BuscarProdutoLeituraPorIdPort,
-        BuscarTodosOsProdutosLeituraPort {
+        BuscarTodosOsProdutosLeituraPort,
+        BuscarProdutosLeituraPorFiltroOrdenacaoPort {
 
     private final ProdutoLeituraRepository produtoLeituraRepository;
 
@@ -38,5 +40,19 @@ public class ProdutoLeituraPersistenceAdapter implements
     @Override
     public List<ProdutoLeitura> buscarTodosProdutosLeitura() {
         return produtoLeituraRepository.findAll();
+    }
+
+
+    @Override
+    public List<ProdutoLeitura> buscarProdutosOrdenadosEFiltrados(BigDecimal precoMax, String idiomaLivro, Sort sortAlfEPreco) {
+        if(precoMax.compareTo(BigDecimal.ZERO) == 0 && idiomaLivro.equals("NONE")){
+            return produtoLeituraRepository.buscarTodosSemFiltroComOrdenacao(sortAlfEPreco);
+        }else if(precoMax.compareTo(BigDecimal.ZERO) == 0 && (!idiomaLivro.equals("NONE"))){
+            return produtoLeituraRepository.buscarTodosComFiltroIdiomaEOrdenacao(Idioma.valueOf(Idioma.class, idiomaLivro), sortAlfEPreco);
+        }else if(precoMax.compareTo(BigDecimal.ZERO) > 0 && (idiomaLivro.equals("NONE"))){
+            return produtoLeituraRepository.buscarTodosComFiltroPrecoMaxEOrdenacao(precoMax, sortAlfEPreco);
+        }else{
+            return produtoLeituraRepository.buscarTodosComFiltroPrecoMaxEIdiomaEOrdenacao(precoMax, Idioma.valueOf(Idioma.class, idiomaLivro), sortAlfEPreco);
+        }
     }
 }
