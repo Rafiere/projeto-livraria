@@ -38,13 +38,26 @@ public class Cliente {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Telefone telefone;
 
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cliente_id")
     private List<Pedido> pedidos = new ArrayList<>();
 
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cliente_id")
     private List<Avaliacao> avaliacoes = new ArrayList<>();
+
+    public Cliente(DadosPessoais dadosPessoais,
+                   DadosBancarios dadosBancarios,
+                   Endereco endereco,
+                   Telefone telefone,
+                   List<Pedido> pedidos,
+                   List<Avaliacao> avaliacoes) {
+
+        this.dadosPessoais = dadosPessoais;
+        this.dadosBancarios = dadosBancarios;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.pedidos = pedidos;
+        this.avaliacoes = avaliacoes;
+    }
 }
