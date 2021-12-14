@@ -2,7 +2,6 @@ package br.com.giantlivros.livrariaonline.pedido.domain;
 
 import br.com.giantlivros.livrariaonline.cliente.domain.Cliente;
 import br.com.giantlivros.livrariaonline.pedido.domain.enums.Transportadora;
-import br.com.giantlivros.livrariaonline.produto.domain.Produto;
 import br.com.giantlivros.livrariaonline.produto.domain.ProdutoLeitura;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
