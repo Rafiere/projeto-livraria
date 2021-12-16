@@ -1,6 +1,7 @@
 package br.com.giantlivros.livrariaonline.cliente.adapter.out.persistence;
 
 import br.com.giantlivros.livrariaonline.cliente.application.port.out.CriarClientePort;
+import br.com.giantlivros.livrariaonline.cliente.application.port.out.EditarEnderecoPort;
 import br.com.giantlivros.livrariaonline.cliente.application.port.out.EditarTelefonePort;
 import br.com.giantlivros.livrariaonline.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ClientePersistenceAdapter implements
         CriarClientePort,
-        EditarTelefonePort {
+        EditarTelefonePort,
+        EditarEnderecoPort {
 
     private final ClienteRepository clienteRepository;
 
@@ -23,5 +25,10 @@ public class ClientePersistenceAdapter implements
     @Override
     public void editarTelefoneCliente(Long idCliente, String novoTelefoneFixo, String novoTelefoneCelular) {
         clienteRepository.editarTelefoneCliente(idCliente, novoTelefoneFixo, novoTelefoneCelular);
+    }
+
+    @Override
+    public void editarEnderecoPort(Long idCliente, String estado, String cidade, String rua, Integer numero, String complemento) {
+        clienteRepository.editarEnderecoCliente(idCliente, estado, cidade, rua, numero, complemento);
     }
 }

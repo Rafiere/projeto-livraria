@@ -24,7 +24,7 @@ public class EditarTelefoneController {
             @ApiResponse(code = 200, message = "Requisição bem sucedida"),
             @ApiResponse(code = 404, message = ""),
             @ApiResponse(code = 400, message = "Algum argumento inválido encontrado")})
-    @PutMapping(path = "/alterar-telefone/{idCliente}")
+    @PutMapping(path = "/alterar-telefone-cliente/{idCliente}")
     public ResponseEntity<Void> executa(
             @PathVariable(name = "idCliente") Long idCliente,
             @RequestBody Telefone telefone
